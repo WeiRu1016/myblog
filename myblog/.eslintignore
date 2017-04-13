@@ -1,0 +1,7 @@
+build/*.js
+config/*.js
+server/routes/*.js
+server/*js
+server/model/*js
+server/controller/*.js
+server/conf/*.js
