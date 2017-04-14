@@ -11,6 +11,6 @@ var articleSchema = new Schema({
     ref: 'catagory'
   }
 });
-var articleModel = mongoose.model('article', articleSchema);
+var articleModel = mongoose.model('article', articleSchema, 'article');
 
 module.exports = articleModel;
