@@ -5,11 +5,8 @@ var userController = require('../controller/userController');
 router.post('/', function (req, res, next) {
   var username = req.body.username,
       password = req.body.password;
-  userController.check(username, password).then(function(err, doc){
-    if (err) {
-      throw new Error
-    }
-    if (doc.length > 0) {
+  userController.check(username, password).then(function(doc){
+    if (doc && doc.length > 0) {
       res.json({
         code: 'success',
         username: doc.username,
