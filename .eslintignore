@@ -5,3 +5,4 @@ server/*js
 server/model/*js
 server/controller/*.js
 server/conf/*.js
+server/plugin/*.js

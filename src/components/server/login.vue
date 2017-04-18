@@ -17,15 +17,18 @@
     methods: {
       // 登录地址：/api/login
       submit (e) {
+        debugger
         let data = new FormData(this.$refs.form)
         fetch('/api/login', {
           method: 'post',
-          header: {'Accept': 'application/json,text/plain,*/*', 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'},
-          body: data
+          body: data,
+          credentials: 'include'
         }).then(response => {
           return response.json()
         }).then(data => {
-          console.log(data)
+          if (data.code === 'success') {
+            this.$router.push({name: 'index'})
+          }
         }).catch(err => {
           console.error(err)
         })
