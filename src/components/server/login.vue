@@ -1,14 +1,16 @@
 <template>
   <div id="login">
-    <form class="main" @submit.prevent="submit" ref="form">
-      <div class="input-group input-icon user">
-        <input type="text" placeholder="请输入用户名" name="username">
-      </div>
-      <div class="input-group input-icon password">
-        <input type="password" placeholder="请输入密码" name="password">
-      </div>
-      <button class="submit" type="submit">登录</button>
-    </form>
+    <div class="main">
+      <form  @submit.prevent="submit" ref="form">
+        <div class="input-group input-icon user">
+          <input type="text" placeholder="请输入用户名" name="username">
+        </div>
+        <div class="input-group input-icon password">
+          <input type="password" placeholder="请输入密码" name="password">
+        </div>
+        <button class="submit" type="submit">登录</button>
+      </form>
+    </div>
   </div>
 </template>
 <script>
@@ -44,7 +46,7 @@
     font-size: 16px;
     background-color: #f1f1f1;
     .main{
-      width: 400px;
+      width: 300px;
       margin: 60px auto 0 auto;
       padding: 50px 50px 30px 50px;
       background-color: #fff;
@@ -67,6 +69,7 @@
     margin: 20px 0px;
     padding: 1px;
     position: relative;
+    width:100%;
   }
   .input-group.input-icon::before{
     position: absolute;
@@ -84,10 +87,12 @@
   .input-group input{
     border: none;
     display: block;
-    padding: 10px 0px 10px 30px;
+    padding: 10px 0px 10px 0px;
+    text-indent: 30px;
+    width:100%;
     // line-height: 0px; 
   }
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px), (max-device-width: 768px) {
     #login{
       height: auto;
       min-height: 0;
