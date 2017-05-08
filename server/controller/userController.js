@@ -1,4 +1,6 @@
-var userModel = require('../model/userModel');
+var user = require('../model/userModel');
+var userModel = user.model;
+var ObjectId = user.ObjectId;
 
 exports.findByName = function (username) {
   return userModel.findOne({username: username}).lean().exec();

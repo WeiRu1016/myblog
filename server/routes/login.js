@@ -28,8 +28,14 @@ router.post('/', multipartMiddleware,  function (req, res, next) {
         msg: '用户名或密码不正确'
       })
     }
+  }).catch(function(err) {
+    console.error(err);
+    res.json({
+      code: 'fail',
+      msg: err
+    })
   })
-})
+});
 
 router.get('/', function (req, res, next){
   var username = req.query.username;
@@ -46,7 +52,44 @@ router.get('/', function (req, res, next){
         msg: '用户不存在'
       })
     }
+  }).catch(function(err) {
+    console.error(err);
+    res.json({
+      code: 'fail',
+      msg: err
+    })
   })
+});
+
+router.get('/islogin', function (req, res, next) {
+  var cookieJwt = req.cookies.jwt;
+  if (!cookieJwt) {
+    return res.json({
+      code: 'fail',
+      data: {
+        login: false
+      },
+      msg: '用户未登录'
+    })
+  }
+  var jsonData = jwt.decode(cookieJwt, secret);
+  if (jsonData.user_id) {
+    res.json({
+      code: 'success',
+      data: {
+        login: true
+      },
+      msg: '用户已登录'
+    })
+  } else {
+    res.json({
+      code: 'fail',
+      data: {
+        login: false
+      },
+      msg: '用户未登录'
+    })
+  }
 })
 
 module.exports = router;

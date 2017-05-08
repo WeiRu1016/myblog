@@ -1,6 +1,6 @@
 module.exports = {
-  url: 'mongodb://localhost:27017/baomax_blog'
-}
+    url: 'mongodb://localhost:27017/baomax_blog'
+};
 /**
  * mongoose连接的方法有：
  * 1. mongoose.connect(url,option);//用于链接一个数据库

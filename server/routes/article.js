@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var articleController = require('../controller/articleController');
+var multipart = require('connect-multiparty');
+var multipartMiddleware = multipart();
 
 router.get('/getOne/:id', function(req, res, next) {
     var id = req.params.id;
@@ -16,6 +18,12 @@ router.get('/getOne/:id', function(req, res, next) {
                 msg: '没有此文章'
             })
         }
+    }).catch(function(err) {
+        console.error(err);
+        res.json({
+          code: 'fail',
+          msg: err
+        })
     })
 });
 
@@ -27,10 +35,16 @@ router.get('/all', function(req, res, next) {
         res.json({
             article: doc
         })
+    }).catch(function(err) {
+        console.error(err);
+        res.json({
+          code: 'fail',
+          msg: err
+        })
     });
 });
 
-router.post('/add', function(req, res, next) {
+router.post('/add', multipartMiddleware, function(req, res, next) {
     var obj = {
         content: req.body.content,
         title: req.body.title,
@@ -50,18 +64,24 @@ router.post('/add', function(req, res, next) {
                 msg: '插入错误'
             })
         }
-    })
+    }).catch(function(err) {
+        console.error(err);
+        res.json({
+          code: 'fail',
+          msg: err
+        })
+    });
 });
 
-router.post('/edit', function(req, res, next) {
+router.post('/edit', multipartMiddleware, function(req, res, next) {
     var id = req.query.id; //文章id
-    var obj = req.body.obj; //修改的文章
+    var obj = req.body; //修改的文章
 
     articleController.edit(id, obj).then(function(doc) {
         if (doc) {
             res.json({
                 code: 'success',
-                id: doc._id
+                id: id
             })
         } else {
             res.json({
@@ -69,6 +89,88 @@ router.post('/edit', function(req, res, next) {
                 msg: '修改不成功'
             })
         }
+    }).catch(function(err) {
+        console.error(err);
+        res.json({
+          code: 'fail',
+          msg: err
+        })
     });
-})
+});
+
+router.post('/delete', function (req, res, next) {
+    var id = req.body.id;
+    if (id) {
+        articleController.deleteOne(id).then(function (doc) {
+            res.json({
+                code: 'success',
+                msg: '删除成功'
+            })
+        }).catch(function (err) {
+            res.json({
+                code: 'fail',
+                msg: err
+            })
+        })
+    } else {
+        res.json({
+            code: 'fail',
+            msg: '文章id参数错误'
+        })
+    }
+});
+
+router.post('/published', function (req, res, next) {
+    var id = req.body.id;
+    if (id) {
+        articleController.publishedOne(id).then(function (doc) {
+            if (doc) {
+                res.json({
+                    code: 'success',
+                    msg: '发布成功',
+                    data: doc
+                })
+            } else {
+                res.json({
+                    code: 'fail',
+                    msg: '未找到此文章，发布不成功'
+                })
+            }
+        }).catch(function (err) {
+            res.json({
+                code: 'fail',
+                msg: err
+            })
+        })
+    } else {
+        res.json({
+            code: 'fail',
+            msg: '文章id参数错误'
+        })
+    }
+});
+
+router.get('/findByCatagory', function (req, res, next) {
+    var id = req.query.id;
+    articleController.findByCatagoryId(id).then(function(docs){
+        if (docs) {
+            res.json({
+                code: 'success',
+                data: docs
+            })
+        }else{
+            res.json({
+                code: 'fail',
+                msg: '未找到此分类下的文章'
+            })
+        }
+    }).catch(function(err){
+        console.error(err);
+        res.json({
+          code: 'fail',
+          msg: err
+        })
+    })
+});
+
 module.exports = router

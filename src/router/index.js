@@ -4,8 +4,27 @@ import Router from 'vue-router'
 import routes from './route'
 
 Vue.use(Router)
-
-export default new Router({
+let router = new Router({
   mode: 'history',
   routes
 })
+
+router.beforeEach(async (to, from, next) => {
+  if (to.meta.isLoginAuthCheck) {
+    let response = await fetch('/api/login/islogin', {
+      credentials: 'include'
+    })
+    let data = await response.json()
+    if (data.data.login) {
+      next()
+    } else {
+      next({
+        path: '/server/login'
+      })
+    }
+  } else {
+    next()
+  }
+})
+
+export default router
