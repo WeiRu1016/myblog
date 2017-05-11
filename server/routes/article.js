@@ -3,6 +3,7 @@ var router = express.Router();
 var articleController = require('../controller/articleController');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
+var loginPlugin = require('../plugin/loginPlugin');
 
 router.get('/getOne/:id', function(req, res, next) {
     var id = req.params.id;
@@ -44,7 +45,7 @@ router.get('/all', function(req, res, next) {
     });
 });
 
-router.post('/add', multipartMiddleware, function(req, res, next) {
+router.post('/add', loginPlugin.isLogin, multipartMiddleware, function(req, res, next) {
     var obj = {
         content: req.body.content,
         title: req.body.title,
@@ -73,7 +74,7 @@ router.post('/add', multipartMiddleware, function(req, res, next) {
     });
 });
 
-router.post('/edit', multipartMiddleware, function(req, res, next) {
+router.post('/edit', loginPlugin.isLogin, multipartMiddleware, function(req, res, next) {
     var id = req.query.id; //文章id
     var obj = req.body; //修改的文章
 
@@ -98,7 +99,7 @@ router.post('/edit', multipartMiddleware, function(req, res, next) {
     });
 });
 
-router.post('/delete', function (req, res, next) {
+router.post('/delete', loginPlugin.isLogin, function (req, res, next) {
     var id = req.body.id;
     if (id) {
         articleController.deleteOne(id).then(function (doc) {
@@ -120,7 +121,7 @@ router.post('/delete', function (req, res, next) {
     }
 });
 
-router.post('/published', function (req, res, next) {
+router.post('/published', loginPlugin.isLogin, function (req, res, next) {
     var id = req.body.id;
     if (id) {
         articleController.publishedOne(id).then(function (doc) {

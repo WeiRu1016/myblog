@@ -1,7 +1,7 @@
 <template>
   <div id="editor">
     <div v-show="article" class="container">
-      <input class="title" v-model="title" @change="setTitle()">
+      <input class="title" v-model="title" @change="setTitle">
       <textarea name="_my-editor" id="_my-editor" v-model="content"></textarea>
     </div>
     <div v-if="!article">
@@ -32,8 +32,10 @@
     watch: {
       article () {
         if (this.article) {
-          this.title = this.article.title
-          this.dem.value(this.article.content)
+          this.$nextTick(() => {
+            this.title = this.article.title
+            this.dem.value(this.article.content)
+          })
         }
       }
     },
@@ -47,6 +49,7 @@
         }
       },
       async edit (obj) {
+        debugger
         let response = await fetch(`/api/article/edit?id=${this.article._id}`, {
           method: 'post',
           headers: {
@@ -61,7 +64,7 @@
       async saveArticle () {
         let con = this.dem.value()
         let data = await this.edit({
-          content: con
+          content: this.dem.markdown(con)
         })
         if (data.code === this.GLOBAL.STATUS.SUCCESS) {
           this.article.content = con
@@ -75,6 +78,7 @@
           spellChecker: false,
           autofocus: true,
           lineWrapping: true,
+          forceSync: true,
           status: false
           // autosave: {
           //   enabled: true,

@@ -3,6 +3,7 @@ var router = new express.Router();
 var catagoryController = require('../controller/catagoryController');
 var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
+var loginPlugin = require('../plugin/loginPlugin');
 
 router.get('/all', function (req, res, next) {
   catagoryController.findAll().then(function(docs) {
@@ -40,8 +41,8 @@ router.get('/getByName', multipartMiddleware, function (req, res, next) {
           msg: err
       })
   })
-})
-router.post('/add', function (req, res, next) {
+});
+router.post('/add', loginPlugin.isLogin, function (req, res, next) {
   var name = req.body.name;
   catagoryController.addOne(name).then(function (doc) {
       if (typeof (doc) === 'object') {
@@ -63,8 +64,8 @@ router.post('/add', function (req, res, next) {
       msg: err
     })
   })
-})
-router.post('/changeName', function(req, res, next) {
+});
+router.post('/changeName', loginPlugin.isLogin, function(req, res, next) {
   var name = req.body.name;
   var id = req.body.id;
   catagoryController.changeName(id, name).then(function(doc){
@@ -87,9 +88,9 @@ router.post('/changeName', function(req, res, next) {
       msg: msg
     })
   })
-})
+});
 
-router.post('/delete', function (req, res, next) {
+router.post('/delete', loginPlugin.isLogin, function (req, res, next) {
   var id = req.body.id;
   if (id) {
     catagoryController.deleteOne(id).then(function(doc){
@@ -111,6 +112,6 @@ router.post('/delete', function (req, res, next) {
       msg: '文集id参数不正确'
     })
   }
-})
+});
 
 module.exports = router;

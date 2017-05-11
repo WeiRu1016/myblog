@@ -1,8 +1,16 @@
-let login = require('../components/server/login')
-let index = require('../components/server/index')
+let login = require('../components/server/views/login')
+let index = require('../components/server/views/index')
 let hello = require('../components/Hello')
+let clientIndex = require('../components/client/views/index')
 
 export default [ {
+  path: '/index',
+  name: 'clientIndex',
+  meta: {
+    isLoginAuthCheck: false
+  },
+  component: clientIndex
+}, {
   path: '/server/login',
   name: 'login',
   meta: {
