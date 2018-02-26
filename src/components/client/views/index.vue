@@ -1,11 +1,23 @@
 <template>
-  <my-header></my-header>
-  <article-list></article-list>
+  <div class="post-list">
+    <list-item v-for="article in articleList" :item="article" :key="article._id"></list-item>
+  </div>
 </template>
 <script>
-  import myHeader from '../myHeader'
-  import articleList from '../articleList'
+  import listItem from '../listItem'
+  import { mapGetters } from 'vuex'
   export default {
-    name: 'index'
+    name: 'index',
+    computed: {
+      ...mapGetters({
+        articleList: 'getclientPublishedArticleList'
+      })
+    },
+    created () {
+      this.$store.dispatch('getAllArticle')
+    },
+    components: {
+      listItem
+    }
   }
 </script>

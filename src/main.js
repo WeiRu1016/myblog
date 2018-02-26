@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import store from './vuex/index'
 import directive from './directive/directive'
+import filters from './filter'
 import globalData from './global'
 import prompt from './plugins/prompt/prompt'
 import confirm from './plugins/confirm/confirm'
@@ -12,8 +13,16 @@ import confirm from './plugins/confirm/confirm'
 
 // Vue.config.productionTip = false
 // Vue.use('iview')
-Object.keys(directive).forEach(function (key) {
+(function initRem () {
+  let _document = document.documentElement
+  let winWidth = window.innerWidth
+  _document.style.fontSize = winWidth / 40 + 'px'
+})()
+Object.keys(directive).forEach((key) => {
   Vue.directive(key, directive[key])
+})
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key])
 })
 Vue.prototype.GLOBAL = globalData
 Vue.use(prompt)

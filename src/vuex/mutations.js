@@ -16,5 +16,9 @@ export default {
   // 设置state里的currentArticle
   [types.SET_CURRENT_ARTICLE] (state, payload) {
     state.server.currentArticle = payload
+  },
+  [types.SET_CLIENT_ARTICLE] (state, payload) {
+    console.log(payload)
+    state.client.articleList = payload
   }
 }

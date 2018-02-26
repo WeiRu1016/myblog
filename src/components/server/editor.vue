@@ -34,7 +34,7 @@
         if (this.article) {
           this.$nextTick(() => {
             this.title = this.article.title
-            this.dem.value(this.article.content)
+            this.dem.value(this.article.text)
           })
         }
       }
@@ -64,12 +64,16 @@
       async saveArticle () {
         let con = this.dem.value()
         let data = await this.edit({
-          content: this.dem.markdown(con)
+          // content: this.dem.markdown(con),
+          text: con
         })
         if (data.code === this.GLOBAL.STATUS.SUCCESS) {
           this.article.content = con
         }
       }
+      // toText (content) {
+
+      // }
     },
     mounted () {
       if (this.$el.getElementsByTagName('textarea').length) {

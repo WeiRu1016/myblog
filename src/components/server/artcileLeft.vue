@@ -1,9 +1,8 @@
 <template>
   <div id="article-left">
-    <div class="add" @click="addArticle">新建文章</div>
+    <div class="icon add" @click="addArticle">新建文章</div>
     <ul class="article-list" v-if="articleList.length">
       <li v-for="item in articleList" :item="item" :id="item._id" is="article-item" :selected=" currentArticle && currentArticle._id === item._id"></li>
-    </ul>
     </ul>
   </div>
 </template>
@@ -33,6 +32,7 @@
       async addArticle () {
         let options = {
           content: '',
+          text: '',
           title: this.GLOBAL.DEFAULT_ARTICLE,
           catalog: '',
           catagory: this.currentCatagory._id
@@ -66,11 +66,10 @@
       padding-left: 10px;
       padding-right: 10px;
       text-align: left;
-      /*border-bottom: 1px solid #ddd;*/
       line-height: 60px;
+      font-size: 18px;
       &::before{
         content: '\e638';
-        font-family: 'iconfont';
         font-size: 18px;
         margin: 5px;
       }

@@ -5,8 +5,8 @@ var userSchema = new Schema({
     username: {
         type: String,
         unique: true
-    },
-    password: String
+    }, // 用户名
+    password: String // 密码
 });
 
 var userModel = mongoose.model('user', userSchema, 'user');

@@ -2,10 +2,10 @@
   <div id="login">
     <div class="main">
       <form  @submit.prevent="submit" ref="form">
-        <div class="input-group input-icon user">
+        <div class="icon input-group input-icon user">
           <input type="text" placeholder="请输入用户名" name="username">
         </div>
-        <div class="input-group input-icon password">
+        <div class="icon input-group input-icon password">
           <input type="password" placeholder="请输入密码" name="password">
         </div>
         <button class="submit" type="submit">登录</button>
@@ -18,22 +18,22 @@
     name: 'login',
     methods: {
       // 登录地址：/api/login
-      submit (e) {
-        debugger
+      async submit (e) {
         let data = new FormData(this.$refs.form)
-        fetch('/api/login', {
-          method: 'post',
-          body: data,
-          credentials: 'include'
-        }).then(response => {
-          return response.json()
-        }).then(data => {
-          if (data.code === 'success') {
+        try {
+          let response = await fetch('/api/login', {
+            method: 'post',
+            body: data,
+            credentials: 'include'
+          })
+          let responseData = await response.json()
+          debugger
+          if (responseData.code === 'success') {
             this.$router.push({name: 'index'})
           }
-        }).catch(err => {
+        } catch (err) {
           console.error(err)
-        })
+        }
       }
     }
   }
@@ -76,7 +76,6 @@
     left: 0;
     font-size: 16px;
     margin: 10px 5px 10px 10px;
-    font-family: 'iconfont';
   }
   .input-group.user::before{
     content: "\e600";
@@ -90,7 +89,6 @@
     padding: 10px 0px 10px 0px;
     text-indent: 30px;
     width:100%;
-    // line-height: 0px; 
   }
   @media (max-width: 768px), (max-device-width: 768px) {
     #login{

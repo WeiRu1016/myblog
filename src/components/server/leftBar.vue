@@ -1,6 +1,6 @@
 <template>
   <div id="leftBar">
-    <a class="add" @click="showToolgle">新建文集</a>
+    <a class="icon add" @click="showToolgle">新建文集</a>
     <transition name="slide-toogle">
       <div v-if="add_show" class="add-group" @blur="showToolgle">
         <input class="add-input" type="text" v-model="addInputName" name="catagoryName" value="" placeholder="请输入文集名称" v-focus>
@@ -13,7 +13,7 @@
     <ul class="catagory-list" v-if="catagoryList.length">
       <li v-for="item in catagoryList" is="list-item" :id="item._id" :selected="currentCatagory && (currentCatagory._id === item._id)" :item="item"></li>
     </ul>
-    <div class="trash">回收站</div>
+    <div class="icon trash">回收站</div>
   </div>
 </template>
 <script>
@@ -84,7 +84,6 @@
       display: block;
       &::before{
         content: '\e622';
-        font-family: 'iconfont';
         font-size: 36px;
         vertical-align: sub;
       }
@@ -96,7 +95,6 @@
       color: #969696;
       &::before{
         content: '\e69d';
-        font-family: 'iconfont';
         font-size: 36px;
         vertical-align: middle;
       }

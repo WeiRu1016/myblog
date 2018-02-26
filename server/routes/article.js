@@ -33,8 +33,12 @@ router.get('/all', function(req, res, next) {
     var limit = req.query.limit || 20;
 
     articleController.findByLimit(page, limit).then(function(doc) {
+        // var docList = [].map.call(doc, function (item) {
+        //     item.exprt = item.content.slice()
+        // })
         res.json({
-            article: doc
+            code: 'success',
+            data: doc
         })
     }).catch(function(err) {
         console.error(err);
@@ -48,6 +52,7 @@ router.get('/all', function(req, res, next) {
 router.post('/add', loginPlugin.isLogin, multipartMiddleware, function(req, res, next) {
     var obj = {
         content: req.body.content,
+        text: req.body.text,
         title: req.body.title,
         catalog: req.body.catalog,
         catagory: req.body.catagory

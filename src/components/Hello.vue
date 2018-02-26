@@ -2,6 +2,8 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h2>Essential Links</h2>
+    <!--<input type="text" name="" value="" autofocus ref="input" id="input">-->
+    <button type="" ref="btn" @click="test" id="btn">lalal</button>
     <ul>
       <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
@@ -27,6 +29,30 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods: {
+    test () {
+      let node = document.createElement('div')
+      node.id = 'test'
+      // let node = document.getElementById('test')
+      node.innerHTML = '<input type="text" name="" value="" autofocus ref="input" id="input">'
+      document.getElementById('app').appendChild(node)
+      // setTimeout(function () {
+      document.getElementById('input').focus()
+      // }, 0)
+      // alert('aaa')
+      // this.$nextTick(() => {
+      //   document.getElementById('input').focus()
+      // })
+      // this.$refs.input.focus()
+    }
+  },
+  mounted () {
+    // this.$nextTick(() => {
+    //   // debugger
+    //   // document.getElementById('input').click()
+    //   document.getElementById('btn').click()
+    // })
   }
 }
 </script>

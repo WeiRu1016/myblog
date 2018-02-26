@@ -11,6 +11,9 @@ const state = {
     currentCatagory: null,
     articleList: [],
     currentArticle: null
+  },
+  client: {
+    articleList: []
   }
 }
 const store = new Vuex.Store({

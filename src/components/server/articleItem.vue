@@ -1,16 +1,16 @@
 <template>
   <li :class="{selected:selected, published: published}" class="list-item list-item-article" @click="setCurrentArticle">
-    <div class="name">
-      {{item.title}}<small class="content">{{item.content}}</small>
+    <div class="icon name">
+      {{item.title}}<small class="content">{{item.text}}</small>
     </div>
     <span class="font-num">字数：{{fontCount}}</span>
     <a v-show="selected" class="setting" @click.prevent="ShowTips">&#xe6b5;</a>
     <div v-show="show && selected" class="tips" tabindex="-1" @blur.prevent.stop="ShowTips" ref="tips">
       <div>
-        <a @click.prevent.stop="showPublish" class="published">发布文章</a>
+        <a @click.prevent.stop="showPublish" class="icon published">发布文章</a>
       </div>
       <div>
-        <a @click.prevent.stop="showDelete" class="delete">删除文章</a>
+        <a @click.prevent.stop="showDelete" class="icon delete">删除文章</a>
       </div>
     </div>
  </li>
@@ -37,7 +37,7 @@
         currentCatagory: 'getCurrentCatagory'
       }),
       fontCount () {
-        return this.item.content.length
+        return this.item.text.length
       },
       published () {
         return this.item.status === 'published'
@@ -121,7 +121,6 @@
     .name{
       &::before{
         content: '\e72e';
-        font-family: 'iconfont';
         font-size: 30px;
         vertical-align: middle;
         padding-right: 5px;
@@ -136,7 +135,6 @@
       color: #555555;
       &::before{
         content: '\e640';
-        font-family: 'iconfont';
         font-size: 26px;
         vertical-align: middle;
         padding-right: 5px;
@@ -158,13 +156,11 @@
   }
   a.published::before{
     content: "\e606";
-    font-family: "iconfont";
     font-size: 24px;
     vertical-align: sub;
   }
   a.delete::before{
     content: "\e69d";
-    font-family: "iconfont";
     font-size: 24px;
     vertical-align: sub;
   }

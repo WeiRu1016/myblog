@@ -4,10 +4,10 @@
     <a v-show="selected" class="setting" @click.prevent="ShowTips">&#xe6b5;</a>
     <div v-show="show && selected" class="tips" tabindex="-1" @blur.prevent.stop="ShowTips" ref="tips">
       <div>
-        <a @click.prevent.stop="show_input" class="edit">修改文集名称</a>
+        <a @click.prevent.stop="show_input" class="icon edit">修改文集名称</a>
       </div>
       <div>
-        <a @click.prevent.stop="show_confirm" class="delete">删除文集</a>
+        <a @click.prevent.stop="show_confirm" class="icon delete">删除文集</a>
       </div>
       <!--<a @clcik.prevent.stop="deleteCatagory" class="delete">删除文集</a>-->
     </div>
@@ -116,13 +116,11 @@
   }
   .edit::before{
     content: "\e626";
-    font-family: "iconfont";
     font-size: 24px;
     vertical-align: sub;
   }
   .delete::before{
     content: "\e69d";
-    font-family: "iconfont";
     font-size: 24px;
     vertical-align: sub;
   }

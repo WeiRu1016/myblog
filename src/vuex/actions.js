@@ -4,6 +4,23 @@ let STATUS = {
   FAIL: 'fail'
 }
 export default {
+  getAllArticle ({commit}) {
+    (async function (commit) {
+      try {
+        let response = await fetch('/api/article/all')
+        let data = await response.json()
+        if (data.code === STATUS.SUCCESS) {
+          commit(types.SET_CLIENT_ARTICLE, data.data)
+          return Promise.resolve(data.data)
+        } else {
+          return Promise.resolve(new Error(data.msg))
+        }
+      } catch (err) {
+        console.error(err)
+        return Promise.reject(err)
+      }
+    })(commit)
+  },
   refresh ({dispatch}, id) {
     (async function (dispatch, id) {
       try {

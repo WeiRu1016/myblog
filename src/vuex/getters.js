@@ -6,11 +6,13 @@ export default {
     return state.server.currentCatagory
   },
   getArticleList (state) {
-    let currentCatagory = state.server.currentCatagory
-    let articleList = state.server.articleList
+    return state.server.articleList
+  },
+  getclientPublishedArticleList (state) {
+    let articleList = state.client.articleList
     let result = []
     for (let item of articleList) {
-      if (item.catagory === currentCatagory._id) {
+      if (item.status === 'published') {
         result.push(item)
       }
     }
