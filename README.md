@@ -1,5 +1,5 @@
 # myblog
-
+[![Build](https://img.shields.io/travis/WeiRu1016/myblog.svg)](https://travis-ci.org/WeiRu1016/myblog.svg?branch=master)
 > A Vue.js project，利用vue+vue-router+vex+fetch构建自己的博客
 
 
