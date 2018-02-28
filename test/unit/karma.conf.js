@@ -16,7 +16,7 @@ module.exports = function (config) {
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
-      './index.js': ['webpack', 'sourcemap', 'coverage']
+      './index.js': ['webpack', 'sourcemap']
     },
     webpack: webpackConfig,
     webpackMiddleware: {
@@ -29,7 +29,7 @@ module.exports = function (config) {
         { type: 'text-summary' },
         { type: 'cobertura',
           subdir: '.',
-          dir: 'test/unit/coverage'
+          dir: 'coverage'
         }
       ]
     }

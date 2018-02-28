@@ -67,7 +67,6 @@
       padding-right: 10px;
       text-align: left;
       line-height: 60px;
-      font-size: 18px;
       &::before{
         content: '\e638';
         font-size: 18px;

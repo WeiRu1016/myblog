@@ -13,11 +13,11 @@ import confirm from './plugins/confirm/confirm'
 
 // Vue.config.productionTip = false
 // Vue.use('iview')
-(function initRem () {
-  let _document = document.documentElement
-  let winWidth = window.innerWidth
-  _document.style.fontSize = winWidth / 40 + 'px'
-})()
+// (function initRem () {
+//   let _document = document.documentElement
+//   let winWidth = window.innerWidth
+//   _document.style.fontSize = winWidth / 40 + 'px'
+// })()
 Object.keys(directive).forEach((key) => {
   Vue.directive(key, directive[key])
 })
