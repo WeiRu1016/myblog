@@ -11,7 +11,7 @@ install:
 before_script:
   - npm run build
   - sleep 15
-  - mongo baomax_blog --eval 'db.createUser({username:"baomax",password:"baomax"});'
+  - mongo baomax_blog --eval 'db.user.insert({username:"baomax",password:"baomax"});'
 script: 
   - npm run server
   - npm run unit
