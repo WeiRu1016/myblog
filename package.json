@@ -12,7 +12,7 @@
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "coverage": "coverage test/unit/coverage/cobertura-coverage.xml"
+    "coverage": "codecov test/unit/coverage/cobertura-coverage.xml"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
