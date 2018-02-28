@@ -13,7 +13,8 @@
     "test": "npm run unit && npm run coverage && npm run e2e",
     "server": "node server/bin/www",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
-    "coverage": "codecov test/unit/coverage/cobertura-coverage.xml"
+    "coverage": "codecov test/unit/coverage/cobertura-coverage.xml",
+    "server:install": "cd server && npm install"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
