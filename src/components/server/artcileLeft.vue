@@ -2,7 +2,7 @@
   <div id="article-left">
     <div class="icon add" @click="addArticle">新建文章</div>
     <ul class="article-list" v-if="articleList.length">
-      <li v-for="item in articleList" :item="item" :id="item._id" is="article-item" :selected=" currentArticle && currentArticle._id === item._id"></li>
+      <li v-for="(item, index) in articleList" :key="index" :item="item" :id="item._id" is="article-item" :selected=" currentArticle && currentArticle._id === item._id"></li>
     </ul>
   </div>
 </template>
@@ -31,7 +31,6 @@
     methods: {
       async addArticle () {
         let options = {
-          content: '',
           text: '',
           title: this.GLOBAL.DEFAULT_ARTICLE,
           catalog: '',

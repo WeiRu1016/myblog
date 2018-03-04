@@ -1,7 +1,7 @@
 <template>
   <li :class="{selected:selected, published: published}" class="list-item list-item-article" @click="setCurrentArticle">
     <div class="icon name">
-      {{item.title}}<small class="content">{{item.text}}</small>
+      {{item.title}}<small class="article-content">{{item.text | excerpt}}</small>
     </div>
     <span class="font-num">字数：{{fontCount}}</span>
     <a v-show="selected" class="setting" @click.prevent="ShowTips">&#xe6b5;</a>
@@ -114,6 +114,8 @@
   }
 </script>
 <style lang="scss">
+  @import '../../assets/css/var.scss';
+
   .list-item-article.selected{
     background-color: #ececec;
   }
@@ -143,11 +145,10 @@
     small{
       display: block;
       font-size: 12px;
-      margin-left: 40px;
       color: #555555;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      margin: 10px;
+      line-height: 1.2em;
+      @include text2line;
     }
     .font-num{
       font-size: 12px;

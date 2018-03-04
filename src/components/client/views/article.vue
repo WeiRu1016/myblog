@@ -6,14 +6,14 @@
         <span class="created">创建于：{{article.create_time | formatTime}}</span>
         <span class="updated" v-if="modeified">上次修改：{{article.update_time | formatTime}}</span>
       </p>
-      <section v-html="article.content" class="article-content"></section>
+      <section class="article-content" v-html="content"></section>
     </article>
     <p v-else>{{errorMsg}}</p>
   </div>
 </template>
 <script>
   import myHeader from '../myHeader'
-
+  import { md2html, trim } from '../../../assets/js/untils.js'
   export default {
     name: 'article',
     components: {
@@ -28,6 +28,9 @@
     computed: {
       modeified () {
         return new Date(this.article.create_time) - new Date(this.article.update_time)
+      },
+      content () {
+        return this.article && md2html(this.article.text)
       }
     },
     beforeRouteEnter: (to, from, next) => {
@@ -53,6 +56,8 @@
 
 </script>
 <style lang="scss">
+    @import '../../../assets/css/article.css';
+
     .article {
       h1.title {
         text-align: left;
@@ -66,6 +71,30 @@
         margin: 1.2em 0;
       }
     .article-content {
+      text-align: left;
+      font-size: 16px;
+      line-height: 1.6em;
+      word-spacing: .5em;
+      pre {
+        background-color: #f8f8f8;
+        padding: 1rem 0.5rem;
+        line-height: 1.1em;
+        border-radius: 2px;
+        margin: 1rem 0;
+        word-spacing: none;
+        code {
+          overflow-x: auto;
+          display: block;
+          padding: 0.2rem 1rem;
+          line-height: 1.5rem;
+          margin: 0;
+          color: #525252;
+          border-radius: 0;
+          white-space: pre
+        }
+      }
+    }
+    .article-content11 {
       text-align: left;
       font-size: 16px;
       img {

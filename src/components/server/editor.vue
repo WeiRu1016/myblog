@@ -96,6 +96,7 @@
 
 </script>
 <style lang="scss">
+  @import '../../assets/css/var.scss';
   #editor {
     /*min-width: 400px;*/
     font-size: 18px;
@@ -116,22 +117,28 @@
       height: 10%;
       min-height: 40px;
     }
-    .container{
+    .container:not(.fullscreen){
       height: 100%;
     }
     .CodeMirror {
+      font-family: $font-family;
       height: 83%;
       min-height: 300px;
       text-align: left;
       border: none;
       overflow: auto; 
     }
-    .editor-toolbar{
-      border: none;
+    .editor-toolbar {
       background-color: #dedede;
       box-shadow: 1px 1px #dedede;
+    }
+    .editor-toolbar:not(.fullscreen){
+      border: none;
       min-height: 40px;
       height: 5%;
+    }
+    .editor-toolbar.fullscreen {
+      border-radius: 0;
     }
     .tips{
       font-size: 40px;

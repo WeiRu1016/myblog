@@ -51,7 +51,6 @@ router.get('/all', function(req, res, next) {
 
 router.post('/add', loginPlugin.isLogin, multipartMiddleware, function(req, res, next) {
     var obj = {
-        content: req.body.content,
         text: req.body.text,
         title: req.body.title,
         catalog: req.body.catalog,
