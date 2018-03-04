@@ -20,10 +20,11 @@ script:
   - npm run coverage
 # deploy:
 #   skip_cleanup: true
-#   provider: pages
+#   provider: push
 #   github-token: $GITHUB_TOKEN
 #   keep-history: true
 #   on:
 #     branch: master
 after_success:
+  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git" master:master
   - ssh $name@$server "./deploy.sh"
