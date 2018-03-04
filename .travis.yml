@@ -26,5 +26,7 @@ script:
 #   on:
 #     branch: master
 after_success:
+  - git add .
+  - git commit -m "发布"
   - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git" master:master
   - ssh $name@$server "./deploy.sh"
