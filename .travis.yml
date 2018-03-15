@@ -24,6 +24,7 @@ after_success:
   master:master
 - ssh $name@$server "./deploy.sh"
 before_install:
+- touch ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - openssl aes-256-cbc -K $encrypted_3286054f5a8a_key -iv $encrypted_3286054f5a8a_iv
