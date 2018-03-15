@@ -1,32 +1,29 @@
 language: node_js
 node_js:
- - "6"
+- '6'
 services:
-  - mongodb
+- mongodb
 cache:
-    directories:
-     - node_modules
-     - server/node_modules
+  directories:
+  - node_modules
+  - server/node_modules
 install:
-  - npm install
-  - npm run server:install
+- npm install
+- npm run server:install
 before_script:
-  - npm run build
-  - sleep 15
-  - mongo baomax_blog --eval 'db.user.insert({username:"baomax",password:"baomax"});'
-script: 
-  # - npm run server
-  - npm run unit
-  - npm run coverage
-# deploy:
-#   skip_cleanup: true
-#   provider: push
-#   github-token: $GITHUB_TOKEN
-#   keep-history: true
-#   on:
-#     branch: master
+- npm run build
+- sleep 15
+- mongo baomax_blog --eval 'db.user.insert({username:"baomax",password:"baomax"});'
+script:
+- npm run unit
+- npm run coverage
 after_success:
-  - git add .
-  - git commit -m "发布"
-  - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git" master:master
-  - ssh $name@$server "./deploy.sh"
+- git add .
+- git commit -m "发布"
+- git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git"
+  master:master
+- ssh $name@$server "./deploy.sh"
+before_install:
+- openssl aes-256-cbc -K $encrypted_3286054f5a8a_key -iv $encrypted_3286054f5a8a_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
