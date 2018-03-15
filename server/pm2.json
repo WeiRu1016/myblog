@@ -1,0 +1,19 @@
+{
+  "name": "baomaxBlog",
+  "script": "./bin/www",
+  "cwd": "./",
+  "watch": [
+    "bin",
+    "routes"
+  ],
+  "ignor-watch": [
+    "node_modules",
+    "logs",
+    "public"
+  ],
+  "error_file": "./logs/app-err.log",
+  "out_file": "./logs/app-out.log",
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
