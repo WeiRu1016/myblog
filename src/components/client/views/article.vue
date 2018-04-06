@@ -13,7 +13,7 @@
 </template>
 <script>
   import myHeader from '../myHeader'
-  import { md2html, trim } from '../../../assets/js/untils.js'
+  import { md2html } from '../../../assets/js/untils.js'
   export default {
     name: 'article',
     components: {

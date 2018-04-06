@@ -84,15 +84,18 @@ export default [{
       path: 'leetcode',
       component: leetcode
     },
-    {
-      path: 'about',
-      component: about
-    },
+    // {
+    //   path: 'about',
+    //   component: about
+    // },
     {
       path: 'article/:id',
       component: clientArticle
     }
   ]
+}, {
+  path: '/client/about',
+  component: about
 }, {
   path: '/server/login', // 后台管理登录页面
   name: 'login',
