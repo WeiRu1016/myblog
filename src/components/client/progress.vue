@@ -34,7 +34,6 @@
     height: 10px;
     position: relative;
     .inner {
-      content: '';
       position: absolute;
       top: 0px;
       bottom: 0px;

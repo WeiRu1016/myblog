@@ -92,8 +92,8 @@ export default {
           name: '教育经历',
           icon: '\ue8c8',
           list: [{
-            startTime: new Date(2017, 8, 1),
-            endTime: new Date(2018, 5, 1),
+            startTime: new Date(2012, 8, 1),
+            endTime: new Date(2016, 5, 1),
             block: '大连理工大学',
             degree: '本科',
             post: '软件工程专业'
