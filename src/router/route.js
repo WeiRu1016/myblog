@@ -94,6 +94,9 @@ export default [{
     }
   ]
 }, {
+  path: '/client/about/:name',
+  component: about
+}, {
   path: '/client/about',
   component: about
 }, {
