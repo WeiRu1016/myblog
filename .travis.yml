@@ -22,6 +22,8 @@ after_success:
 - git commit -m "发布"
 - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git"
   master:master
+- eval `ssh-agent` 
+- ssh-add
 - ssh $name@$server "./deploy.sh"
 before_install:
 - touch ~/.ssh/id_rsa
