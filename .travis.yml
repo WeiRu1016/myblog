@@ -29,4 +29,4 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
 addons:
-  ssh_known_hosts: $server
+  ssh_known_hosts: 47.94.243.139
