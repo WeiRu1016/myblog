@@ -16,7 +16,7 @@ router.post('/', multipartMiddleware,  function (req, res, next) {
         user_id: doc._id
       };
       var token = jwt.encode(payload, secret);
-      res.cookie('jwt', token, {domain:'.baobao.com', httpOnly: true, maxAge: 1000*60*60});
+      res.cookie('jwt', token, {domain:'.weiru.xyz', httpOnly: true, maxAge: 1000*60*60});
       res.json({
         code: 'success',
         username: doc.username,

@@ -1,8 +1,6 @@
 language: node_js
 node_js:
 - '6'
-services:
-- mongodb
 cache:
   directories:
   - node_modules
@@ -12,8 +10,6 @@ install:
 - npm run server:install
 before_script:
 - npm run build
-- sleep 15
-- mongo baomax_blog --eval 'db.user.insert({username:"baomax",password:"baomax"});'
 script:
 - npm run unit
 - npm run coverage
@@ -22,8 +18,6 @@ after_success:
 - git commit -m "发布"
 - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git"
   master:master
-- eval `ssh-agent` 
-- ssh-add
 - ssh $name@$server "./deploy.sh"
 before_install:
 - touch ~/.ssh/id_rsa
@@ -31,4 +25,4 @@ before_install:
   -in id_rsa.enc -out ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
 addons:
-  ssh_known_hosts: 47.94.243.139
+  ssh_known_hosts: $server

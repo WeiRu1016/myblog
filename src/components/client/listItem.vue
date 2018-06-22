@@ -47,12 +47,6 @@
       text-indent: 2em;
       @include text2line;
     }
-    // .article,a {
-    //   font-size: 14px;
-    //   line-height: 1.2;
-    //   word-spacing: 5px;
-    //   margin: 5px 0;
-    // }
     a{
       color: #ec7259;
     }

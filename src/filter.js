@@ -1,4 +1,4 @@
-import { trim, md2html } from './assets/js/untils'
+import { trim } from './assets/js/untils'
 
 const formatTime = (value) => {
   const date = new Date(value)
@@ -10,9 +10,8 @@ const formatTime = (value) => {
   return [year, month, day].join('/')
 }
 const excerpt = (value) => {
-  let div = document.createElement('div')
-  div.innerHTML = md2html(value).replace(/<pre>(\n|.)*<\/pre>/, '')
-  return trim(div.innerText)
+  const text = value.replace(/[\n\t\r\s]/g, '').replace(/[!"#$%&'()*+,\-./:;<=>?@[\]\\^_`{|}~]/g, '').slice(0, 150)
+  return trim(text)
 }
 export default {
   formatTime,

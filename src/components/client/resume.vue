@@ -1,7 +1,7 @@
 <template>
   <div class="resume">
-    <section class="header">
-      <section class="left-block header-left">
+    <section class="left-block">
+      <section class="header">
         <h1 class="name">{{ name }}</h1>
         <section class="job-info">
           <div v-for="(info, index) in jobInfo" :key="index">
@@ -9,47 +9,47 @@
           </div>
         </section>
       </section>
-      <section class="person-info right-block">
-        <div class="person-info-item" v-for="(info, index) in personInfo" :key="index" :content="info.icon">
-          {{ info.label }}: {{ info.value }}
-        </div>
-      </section>
-    </section>
-    <section class="wrapper">
-      <section class="left-block">
+      <div>
         <div class="list" v-for="(item, index) in timeList" :key="index">
           <div class="title" :content="item.icon">{{ item.name }}</div>
           <time-line :data="item.list"></time-line>
         </div>
-      </section>
-      <section class="right-block other">
-        <div>
-          <div class="title" :content="`\ue604`">专业技能</div>
-          <div class="other-list">
-            <my-progress v-for="(item, index) in skill" :key="index" :value="item.percent" :name="item.name"></my-progress>
+      </div>
+    </section>
+    <section class="right-block">
+        <section class="person-info">
+          <div class="person-info-item" v-for="(info, index) in personInfo" :key="index" :content="info.icon">
+            {{ info.label }}: {{ info.value }}
+          </div>
+        </section>
+        <div class="other">
+          <div>
+            <div class="title" :content="`\ue604`">专业技能</div>
+            <div class="other-list">
+              <my-progress v-for="(item, index) in skill" :key="index" :value="item.percent" :name="item.name"></my-progress>
+            </div>
+          </div>
+          <div>
+            <div class="title" :content="`\ue623`">语言技能</div>
+            <div class="other-list point-style-list">
+              <p v-for="(item, index) in language" :key="index">{{ item }}</p>
+            </div>
+          </div>
+          <div>
+            <div class="title" :content="`\ue649`">兴趣爱好</div>
+            <div class="other-list block-style-list">
+              <span class="hobby" v-for="(item, index) in hobby" :key="index" :content="item.icon">
+                {{ item.name }}
+              </span>
+            </div>
+          </div>
+          <div>
+            <div class="title" :content="`\ue65d`">自我评价</div>
+            <div class="other-list point-style-list">
+              <p v-for="(item, index) in assessment" :key="index">{{ item }}</p>
+            </div>
           </div>
         </div>
-        <div>
-          <div class="title" :content="`\ue623`">语言技能</div>
-          <div class="other-list point-style-list">
-            <p v-for="(item, index) in language" :key="index">{{ item }}</p>
-          </div>
-        </div>
-        <div>
-          <div class="title" :content="`\ue649`">兴趣爱好</div>
-          <div class="other-list block-style-list">
-            <span class="hobby" v-for="(item, index) in hobby" :key="index" :content="item.icon">
-              {{ item.name }}
-            </span>
-          </div>
-        </div>
-        <div>
-          <div class="title" :content="`\ue65d`">自我评价</div>
-          <div class="other-list point-style-list">
-            <p v-for="(item, index) in assessment" :key="index">{{ item }}</p>
-          </div>
-        </div>
-      </section>
     </section>
   </div>
 </template>
@@ -78,26 +78,28 @@ export default {
 </script>
 <style lang="scss">
   .resume {
-    width: 960px;
+    max-width: 960px;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,.09);
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     .left-block {
-      width: 60%;
-      float: left;
-      margin-right: 10%;
+      flex: 6;
+      max-width: 580px;
     }
     .right-block {
-      width: 30%;
-      float: right;
+      flex: 3;
+      max-width: 280px;
       box-sizing: border-box;
       padding-right: 20px;
+      margin-left: 60px;
+    }
+    .content {
+      margin-top: 20px;
     }
     .header {
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-    .header-left {
       height: 160px;
       background: #465364;
       color: #fff;
@@ -128,10 +130,6 @@ export default {
           font-size: 20px;
         }
       }
-    }
-    .wrapper {
-      overflow: hidden;
-      width: 100%;
     }
     .title {
       line-height: 2em;
@@ -198,6 +196,18 @@ export default {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+    }
+  }
+  @media screen and (max-width: 580px) {
+    .resume {
+      .left-block {
+        flex: none;
+        width: 100%;
+      }
+      .right-block {
+        flex: none;
+        width: 100%;
+      }
     }
   }
 </style>

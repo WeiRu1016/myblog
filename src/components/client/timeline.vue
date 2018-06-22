@@ -3,9 +3,11 @@
     <div v-for="(item, index) in data" :key="index" class="time-line-item">
       <div class="degree-block">
         <span>{{ item.startTime | formatTime }}--{{ item.endTime | formatTime }}</span>
-        <span v-if="item.degree">{{ item.degree }}</span>
-        <span v-if="item.post">{{ item.post }}</span>
-        <span v-if="item.block">{{ item.block }}</span>
+        <span class="degree-block-info">
+          <span v-if="item.degree">{{ item.degree }}</span>
+          <span v-if="item.post">{{ item.post }}</span>
+          <span v-if="item.block">{{ item.block }}</span>
+        </span>
       </div>
       <div class="desc" v-if="isArray(item.desc)">
         <div class="desc-list" v-for="(desc, index) in item.desc" :key="index">
@@ -84,8 +86,15 @@
     .degree-block {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       font-size: 18px;
       font-weight: 600;
+      &-info {
+        display: flex;
+        > span {
+          margin-right: 10px;
+        }
+      }
     }
     .desc-list {
       .desc-label {
