@@ -16,6 +16,7 @@ script:
 - npm run unit
 - npm run coverage
 after_success:
+- pwd
 - tar -jcf dist.tar.gz dist
 - scp dist.tar.gz $name@$server:~/ -o StrictHostKeyChecking=no
 - chmod 600 ~/.ssh/id_rsa
