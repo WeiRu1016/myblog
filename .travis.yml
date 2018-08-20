@@ -18,7 +18,7 @@ script:
 - npm run coverage
 after_success:
 - tar -jcf dist.tar.gz dist
-- scp dist.tar.gz $name@$server:~/
+- scp dist.tar.gz $name@$server:~/ -o StrictHostKeyChecking=no
 - chmod 600 ~/.ssh/id_rsa
 - ssh $name@$server -o StrictHostKeyChecking=no "mkdir -p dist && tar -jxf dist.tar.gz && sh deploy.sh"
 addons:
