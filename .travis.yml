@@ -11,9 +11,8 @@ before_install:
 install:
 - npm install
 - npm run server:install
-before_script:
-- npm run build
 script:
+- npm run build
 - npm run unit
 - npm run coverage
 after_success:
