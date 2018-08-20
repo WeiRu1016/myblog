@@ -14,6 +14,7 @@ script:
 - npm run unit
 - npm run coverage
 after_success:
+- chmod 600 ~/.ssh/id_rsa
 - git add .
 - git commit -m "发布"
 - git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git"
@@ -21,9 +22,9 @@ after_success:
 - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $server
 - ssh $name@$server "./deploy.sh"
 before_install:
+- touch ~/.ssh/id_rsa
 - openssl aes-256-cbc -K $encrypted_1cf1ef5de06c_key -iv $encrypted_1cf1ef5de06c_iv
   -in id_rsa.enc -out ~\/.ssh/id_rsa -d
-- chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_known_hosts:
   - git.example.com
