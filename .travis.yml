@@ -21,13 +21,13 @@ after_success:
 - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $server
 - ssh $name@$server "./deploy.sh"
 before_install:
-- touch ~/.ssh/id_rsa
 - openssl aes-256-cbc -K $encrypted_3286054f5a8a_key -iv $encrypted_3286054f5a8a_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+# - touch ~/.ssh/id_rsa
+# - openssl aes-256-cbc -K $encrypted_3286054f5a8a_key -iv $encrypted_3286054f5a8a_iv
+#   -in id_rsa.enc -out ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
-# - eval $(ssh-agent)
-# - ssh-add ~/.ssh/id_rsa
 addons:
-  ssh_known_hosts: 
+  ssh_known_hosts:
   - git.example.com
-  - $server
+  - "$server"
