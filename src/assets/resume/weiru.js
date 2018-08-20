@@ -113,7 +113,7 @@ export default {
           ]
         },
         {
-          degree: '58app二手商家详情页ntive转h5',
+          degree: '58app二手商家详情页native转h5',
           startTime: new Date(2017, 7),
           endTime: new Date(2017, 8),
           desc: [
