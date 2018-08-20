@@ -18,7 +18,7 @@ script:
 after_success:
 - chmod 600 ~/.ssh/id_rsa
 - tar -jcf dist.tar.gz dist
-- scp -o "StrictHostKeyChecking=no" dist.tar.gz $name@$server:~/
+- scp -o StrictHostKeyChecking=no dist.tar.gz $name@$server:~/
 - ssh $name@$server -o StrictHostKeyChecking=no "rm -rf dist && tar -jxf dist.tar.gz && sh deploy.sh"
 addons:
   ssh_known_hosts:
