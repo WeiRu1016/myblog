@@ -61,6 +61,7 @@
     min-height: 200px;
     width: 25%;
     height: 100%;
+    overflow: auto;
     .add{
       padding-left: 10px;
       padding-right: 10px;
