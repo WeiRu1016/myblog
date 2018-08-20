@@ -43,7 +43,6 @@
         })
         let data = await response.json()
         next(vm => {
-          debugger
           if (data.code === vm.GLOBAL.STATUS.SUCCESS) {
             vm.article = data.article
           } else {

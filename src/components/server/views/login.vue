@@ -27,7 +27,6 @@
             credentials: 'include'
           })
           let responseData = await response.json()
-          debugger
           if (responseData.code === 'success') {
             this.$router.push({name: 'index'})
           }

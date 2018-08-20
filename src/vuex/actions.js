@@ -29,11 +29,9 @@ export default {
           if (id) {
             await dispatch('setCurrentCatagory', id)
           } else {
-            debugger
             await dispatch('setCurrentCatagory', catagoryList[0]._id)
           }
         } else {
-          debugger
           await dispatch('setCurrentCatagory', null)
         }
       } catch (err) {

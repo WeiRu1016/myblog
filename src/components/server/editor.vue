@@ -49,7 +49,6 @@
         }
       },
       async edit (obj) {
-        debugger
         let response = await fetch(`/api/article/edit?id=${this.article._id}`, {
           method: 'post',
           headers: {

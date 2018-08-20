@@ -82,7 +82,6 @@
         }
       },
       async publishedArticle () {
-        debugger
         let response = await fetch('/api/article/published', {
           method: 'post',
           headers: {
