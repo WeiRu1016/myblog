@@ -21,11 +21,8 @@ after_success:
 - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $server
 - ssh $name@$server "./deploy.sh"
 before_install:
-- openssl aes-256-cbc -K $encrypted_3286054f5a8a_key -iv $encrypted_3286054f5a8a_iv
+- openssl aes-256-cbc -K $encrypted_1cf1ef5de06c_key -iv $encrypted_1cf1ef5de06c_iv
   -in id_rsa.enc -out ~\/.ssh/id_rsa -d
-# - touch ~/.ssh/id_rsa
-# - openssl aes-256-cbc -K $encrypted_3286054f5a8a_key -iv $encrypted_3286054f5a8a_iv
-#   -in id_rsa.enc -out ~/.ssh/id_rsa
 - chmod 600 ~/.ssh/id_rsa
 addons:
   ssh_known_hosts:
