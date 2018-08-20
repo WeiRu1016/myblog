@@ -15,10 +15,6 @@ script:
 - npm run coverage
 after_success:
 - chmod 600 ~/.ssh/id_rsa
-- git add .
-- git commit -m "发布"
-- git push --force --quiet "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git"
-  master:master
 - ssh $name@$server -o StrictHostKeyChecking=no "cd code/myblog && sh deploy.sh"
 before_install:
 - openssl aes-256-cbc -K $encrypted_1cf1ef5de06c_key -iv $encrypted_1cf1ef5de06c_iv
@@ -27,3 +23,14 @@ addons:
   ssh_known_hosts:
   - git.example.com
   - "$server"
+before_deploy:
+  - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)" --force --queit "https://${GITHUB_TOKEN}@github.com/WeiRu1016/myblog.git" master:master
+deploy:
+  provider: releases
+  api_key:
+    secure: aUVAwkobPCkabRF0AmFe5MVyPLV3guTcOLD4m9YXkXPeHOz6eOGmUPbehGk45dXz1COb/PbuPbI2riwpWpAoU2L+0ITNBnaRrbndhaMeeAXvHXp8BuBOoXjjOkIElpYSgCsLGU3csqrpSUeWx+8EqwnTE22mCiYjkqI6dHxSj2C9yioz5rAn6lk67jkzrnz3Y7VnKXv/AAOhxo6gCeNQy7klcRH8sCzfcVwiVCE821CTBmd9wBXTAW9ZVnoR3Ol5tCJg/TNvJmr9poRYikCQMuPg8vD3wK6dyIt27NXmDwG17EeJL7eJ9nHVEnzLnbjm0WARalZEJdt8+jru5rCk8RedQQvzKq6LBW+IZlndVhjNf3eXJDXxE752GjwvKbgTma+HNfUk0N9UzlWJHwcKuctxbJlxgKWYVKhUqizUWD6sKkCQMEWe9JMnn04/ZZJzSa+QiACxRjwplUaM7/CQGeTWxERFXec89LBA7cOcgZJ29uS8FLeD1lbk0WVOTC/2iwrAm4n/eKoXJUZSUORwL5lylZAYv9V0Lep8Wa4hRRm3F3+rnYzhOZenh4zYIk6b+5dqgN44ZBnym9OWQ+0GTRX6MNDfMCuBOCOtnN3Qdpc99/SKv8USg/UsmK1TOQ2pZFFcooUfqJ/mITMwa0Zg2SOqoUhWqxqvVYw/zfNAx+4=
+  file: *.tar.gz
+  on:
+    repo: WeiRu1016/myblog
+    tags: true
+  skip_cleanup: true
