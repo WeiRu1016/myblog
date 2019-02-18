@@ -13,24 +13,24 @@ export default {
     },
     {
       label: '邮箱',
-      value: '1216391540@qq.com',
+      value: '1622103660@qq.com',
       icon: '\ue608'
     },
     {
       label: '年龄',
-      value: '24',
+      value: '25',
       icon: '\ue682'
     }
   ],
   jobInfo: [
     {
       label: '求职目标',
-      value: '后端研发工程师',
+      value: '后端工程师',
       icon: '\ue608'
     },
     {
       label: '工作经验',
-      value: '2年'
+      value: '3年'
     }
   ],
   timeList: [
@@ -39,8 +39,8 @@ export default {
       icon: '\ue8c8',
       list: [
         {
-          startTime: new Date(2012, 8, 1),
-          endTime: new Date(2016, 5, 1),
+          startTime: new Date(2012, 7, 1),
+          endTime: new Date(2016, 4, 1),
           block: '大连理工大学',
           degree: '本科',
           post: '软件工程专业'
@@ -52,18 +52,11 @@ export default {
       icon: '\ue620',
       list: [
         {
-          startTime: new Date(2017, 4, 23),
+          startTime: new Date(2016, 6, 4),
           endTime: '至今',
-          block: '转转精神科技有限责任公司',
-          post: '前端工程师',
-          desc: '主要负责58app的二手前端改版维护迭代，转转的商业系统的前端开发维护，采用React，Vue，Webpack等技术栈'
-        },
-        {
-          startTime: new Date(2016, 6, 1),
-          endTime: new Date(2017, 4, 19),
-          block: '折800（团博百众有限责任公司）',
-          post: '前端工程师',
-          desc: '负责折800移动端网页开发，采用JavaScript，Zepto.js，Sea.js，以及部分的Vue改版迁移'
+          block: '奇虎360',
+          post: '服务端开发工程师',
+          desc: '负责服务端开发，包括千万量级基础数据服务，数据聚合优化，爬虫服务，评论服务，代理下载，延迟消息中间件等。主要使用技术PHP，GO，Redis，Kafka，Solr，ES，Hadoop'
         }
       ]
     },
@@ -72,151 +65,106 @@ export default {
       icon: '\ue61b',
       list: [
         {
-          degree: '转转商业业务端',
-          startTime: new Date(2017, 11),
-          endTime: '至今',
+          degree: '影视部门服务端',
+          startTime: new Date(2016, 6),
+          endTime: new Date(2017, 10),
           desc: [
             {
               label: '项目描述',
-              value: '面向一些小型商家在58三端以及转转app中广告投放推广商品的后台管理系统'
+              value: '该项目为360影视web主站提供过亿量级数据服务访问，使用redis缓存提高服务响应数据和并发，机房之下增量全量数据同步模式进行数据更新，稳定高效。'
             },
             {
               label: '使用技术',
-              value: 'antd组件库，React，React-router，Redux，Webpack，ES6'
+              value: 'PHP，Mysql, Redis，Kafka，SOA，Hadoop ，Html，Css，Js'
             },
             {
               label: '负责工作',
-              value: ['基于antd组件库，构建商家投放列表以及商家创建投放', '整体项目后期的维护和迭代']
+              value: ['基础数据收录流程优化，后台维护优化，短视频收录优化，基础数据服务，业务代码实现，数据修复，数据监控，死链检测等模块']
             }
           ]
         },
         {
-          degree: '转转商业系统0.1',
-          startTime: new Date(2017, 8),
-          endTime: new Date(2017, 11),
+          degree: '搜索项目优化',
+          startTime: new Date(2018, 2),
+          endTime: new Date(2018, 4),
           desc: [
             {
               label: '项目描述',
-              value: '商业项目的一个MVP项目，主要是对于商业方向的试错，为后来的整体商业项目做个市场调查'
+              value: '短视频搜索相关性低，实现从Solr迁移至Elasticsearch，提升搜索相关性，优化点击转化'
             },
             {
               label: '使用技术',
-              value: 'antd组件库，React，React-router，Redux，Webpack，ES6'
+              value: 'Elasticsearch，Solr，Go'
             },
             {
               label: '负责工作',
               value: [
-                '主要负责投放后台，供商户通过58登录后，按类别分城市进行购买推广时间段，以及展示商户的订单列表',
-                ' react生态的初体验，理解组件化的思想'
+                '调研学习ES特性及语法，进行Solr数据到ES迁移，优化搜索结果，进行AB测试进行逐步替换，采用Golang开发基础api接口服务'
               ]
             }
           ]
         },
         {
-          degree: '58app二手商家详情页ntive转h5',
-          startTime: new Date(2017, 7),
-          endTime: new Date(2017, 8),
+          degree: '推推视频社交APP',
+          startTime: new Date(2018, 4),
+          endTime: new Date(2018, 11),
           desc: [
             {
               label: '项目描述',
-              value: '因为转转独立，方便二手业务的迭代，将商家详情页native版本替换成h5，方便日后迭代和维护'
+              value: '推推是一款基于短视频聊天交友的社交app，主打熟人视频社交'
             },
             {
               label: '使用技术',
-              value: 'Java velocity模版，es6，webpack'
+              value: 'Java PHP，SOA，Kafka ，融云IM'
             },
             {
               label: '负责工作',
               value: [
-                '根据现有的商家详情页功能，复刻出一套h5的商家详情页',
-                '纯手工搭建webpack打包，对前端工程化有深刻的理解'
+                'app业务端负责人，主要与产品、客户端进行需求沟通，梳理社交聊天流程，实现     短视频聊天，好友关系，红包活动，H5分享等功能，推进项目的不断更新迭代'
               ]
             }
           ]
         },
         {
-          degree: '58app二手大类页改版',
-          startTime: new Date(2017, 5),
-          endTime: new Date(2017, 7),
+          degree: '多线程代理下载器',
+          startTime: new Date(2018, 11),
+          endTime: new Date(2018, 12),
           desc: [
             {
               label: '项目描述',
               value:
-                '因为58二手存在很严重的代码历史包袱，代码的维护和需求的迭代都有很高的人力成本，所以要对老旧代码进行组件化改版，降低维护成本，适应敏捷开发，快速迭代'
+                '该项目是基于Golang开发的多线程代理下载器，统一调度下载，通过统一解决方案'
             },
             {
               label: '使用技术',
-              value: 'Vue，Vue-router，Webpack，ES6'
+              value: 'Go，Redis，Kafka ，Docker'
             },
             {
               label: '负责工作',
               value: [
-                '将现有的Java velocity模版的二手大类页，拆解分析成各个子模块',
-                '通过Vue组件化，构建出新的大类页',
-                '利用vue实现一个通用的swipe的组件',
-                '利用webpack插件实现无损雪碧图（webpack-spritesmith），并深入分析实现了一个雪碧图制作工具'
+                '开发与实现Golang多线程下载器，采用kafka做消息传递，Docker分布式部署'
               ]
             }
           ]
         },
         {
-          degree: 'vue项目学习和实践',
-          startTime: new Date(2017, 3),
-          endTime: new Date(2017, 4),
+          degree: '延迟消息中间件',
+          startTime: new Date(2018, 11),
+          endTime: new Date(2018, 0),
           desc: [
             {
               label: '项目描述',
-              value: '原项目向vue迁移，实现我的优惠券功能的开发和迁移'
+              value: '该项目是基于Golang开发的延迟消息中间件，通过时间轮盘方式，将延迟消息存储在内存中，延时发送消息至kafka消息队列'
             },
             {
               label: '使用技术',
-              value: 'Vue，Vuex，Vue-router，Webpack，ES6'
+              value: 'Go，Kafka ，Redis，Docker，测试工具：Jmeter，Gops'
             },
             {
               label: '负责工作',
               value: [
-                '通过vue框架实现我的优惠券，查看无效优惠券，优惠券跳转，兑换优惠券等功能',
-                '学习webpack打包，实现前端工程化'
+                '调研时间轮盘实现方式，设计实现时间轮盘，延迟消息持久化，异常处理恢复等功能模块。进行功能测试，系统压测，检测系统健壮性，Docker分布式部署'
               ]
-            }
-          ]
-        },
-        {
-          degree: '折800移动端立即购买下单页',
-          startTime: new Date(2017, 5),
-          endTime: new Date(2016, 11),
-          desc: [
-            {
-              label: '项目描述',
-              value: '微商城、折800app、手机wap三端立即购买下单页改版、迭代、维护'
-            },
-            {
-              label: '使用技术',
-              value: 'JavaScript，Zepto.js，Sea.js'
-            },
-            {
-              label: '负责工作',
-              value: '立即购买下单页的开发和维护，实现页面的渲染，活动和优惠的计算等逻辑处理'
-            }
-          ]
-        },
-        {
-          degree: '折800移动端登录页',
-          startTime: new Date(2017, 7),
-          endTime: new Date(2016, 11),
-          desc: [
-            {
-              label: '项目描述',
-              value: '微商城、折800app、手机wap三端登录页改版、迭代、维护'
-            },
-            {
-              label: '使用技术',
-              value: 'JavaScript，Zepto.js，Sea.js'
-            },
-            {
-              label: '负责工作',
-              value:
-                '登录注册改版，利用native中webView内嵌h5页面，客户端和h5之间通过商定的协议进行数据和状态的传输，实现用户登录，注册，滑块验证码的接入'
             }
           ]
         }

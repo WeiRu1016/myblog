@@ -84,10 +84,10 @@ export default [{
       path: 'leetcode',
       component: leetcode
     },
-    // {
-    //   path: 'about',
-    //   component: about
-    // },
+    {
+      path: 'about',
+      component: about
+    },
     {
       path: 'article/:id',
       component: clientArticle
