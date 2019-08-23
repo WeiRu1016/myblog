@@ -29,6 +29,8 @@
           let responseData = await response.json()
           if (responseData.code === 'success') {
             this.$router.push({name: 'index'})
+          } else {
+            alert(responseData.msg)
           }
         } catch (err) {
           console.error(err)
