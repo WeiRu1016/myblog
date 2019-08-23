@@ -11,7 +11,7 @@
       </div>
     </transition>
     <ul class="catagory-list" v-if="catagoryList.length">
-      <li v-for="item in catagoryList" is="list-item" :id="item._id" :selected="currentCatagory && (currentCatagory._id === item._id)" :item="item"></li>
+      <li v-for="item in catagoryList" is="list-item" :key="item._id" :id="item._id" :selected="currentCatagory && (currentCatagory._id === item._id)" :item="item"></li>
     </ul>
     <div class="icon trash">回收站</div>
   </div>

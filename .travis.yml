@@ -7,7 +7,7 @@ cache:
   - server/node_modules
 before_install:
 - openssl aes-256-cbc -K $encrypted_d4cc6a4670fe_key -iv $encrypted_d4cc6a4670fe_iv
-  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+  -in id_rsa.pub.enc -out ~\/.ssh/id_rsa.pub -d
 install:
 - npm install
 - npm run server:install

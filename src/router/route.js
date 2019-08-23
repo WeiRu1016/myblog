@@ -69,6 +69,9 @@ let about = (resolve) => {
  * 因为博客客户端有固定的导航栏所有利用了子路由
  */
 export default [{
+  path: '/client/about/print/:name',
+  component: about
+}, {
   path: '/client', // 整个博客客户端路由
   name: 'clientIndex',
   meta: {
@@ -93,12 +96,6 @@ export default [{
       component: clientArticle
     }
   ]
-}, {
-  path: '/client/about/:name',
-  component: about
-}, {
-  path: '/client/about',
-  component: about
 }, {
   path: '/server/login', // 后台管理登录页面
   name: 'login',
